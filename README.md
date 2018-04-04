@@ -2,8 +2,6 @@
 
 [Udacity Android Developer Nanodegree](https://www.udacity.com/course/android-developer-nanodegree-by-google--nd801), Project 3.
 
-#### Description:
-
 Allows a user to select a recipe and see video-guided steps for how to complete it.
 
 #### Task List:

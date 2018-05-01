@@ -5,4 +5,6 @@ package app.example.baking.bakingapp.model;
  */
 
 public class Recipe {
+
+
 }

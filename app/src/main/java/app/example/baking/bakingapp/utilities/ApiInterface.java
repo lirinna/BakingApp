@@ -13,5 +13,5 @@ import retrofit2.http.GET;
 public class ApiInterface {
 
     @GET("59121517_baking/baking.json")
-
+    Call<List<Recipe>> getRecipes();
 }

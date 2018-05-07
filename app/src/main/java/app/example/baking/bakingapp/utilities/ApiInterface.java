@@ -10,7 +10,7 @@ import retrofit2.http.GET;
  * Created by Katy on 02.05.2018.
  */
 
-public class ApiInterface {
+public interface ApiInterface {
 
     @GET("59121517_baking/baking.json")
     Call<List<Recipe>> getRecipes();

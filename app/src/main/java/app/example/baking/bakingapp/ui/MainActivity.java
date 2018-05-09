@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
         mRecyclerView = findViewById(R.id.recyclerview_movie);
 
-        GridLayoutManager manager = new GridLayoutManager(this, 2, GridLayoutManager.VERTICAL, false);
+        GridLayoutManager manager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
 

@@ -13,6 +13,7 @@ import android.widget.TextView;
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.model.Recipe;
 
+
 /**
  * Created by Katy on 09.05.2018.
  */
@@ -67,9 +68,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     @Override
     public void onBindViewHolder(RecipeAdapterViewHolder holder, int position) {
         String name = mRecipeData[position].getName();
+        String image = mRecipeData[position].getImage();
+        String steps = String.valueOf(mRecipeData[position].getSteps());
 
         mName.setText(name);
+
         Log.e(TAG, "name: " + name);
+        Log.e(TAG, "image: " + image);
+        Log.e(TAG, "steps: " + steps);
 
     }
 

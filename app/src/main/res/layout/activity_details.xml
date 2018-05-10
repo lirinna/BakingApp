@@ -1,9 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="app.example.baking.bakingapp.DetailsActivity">
+    android:orientation="vertical"
+    tools:context="app.example.baking.bakingapp.ui.activities.DetailsActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:id="@+id/container_ingredients"
+            android:layout_height="wrap_content">
+        </FrameLayout>
+
+
+
+    </ScrollView>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:id="@+id/container_steps"
+        android:layout_height="wrap_content">
+    </FrameLayout>
+
+</LinearLayout>

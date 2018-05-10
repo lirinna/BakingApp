@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
@@ -14,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import app.example.baking.bakingapp.DetailsActivity;
+import app.example.baking.bakingapp.ui.activities.DetailsActivity;
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.adapter.RecipeAdapter;
 import app.example.baking.bakingapp.loaders.RecipeLoader;

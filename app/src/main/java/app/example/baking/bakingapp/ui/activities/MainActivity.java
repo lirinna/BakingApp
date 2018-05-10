@@ -1,9 +1,5 @@
-package app.example.baking.bakingapp.ui;
+package app.example.baking.bakingapp.ui.activities;
 
-import android.content.Context;
-import android.content.Intent;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;

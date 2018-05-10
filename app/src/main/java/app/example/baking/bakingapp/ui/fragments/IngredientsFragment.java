@@ -1,4 +1,4 @@
-package app.example.baking.bakingapp.fragments;
+package app.example.baking.bakingapp.ui.fragments;
 
 import android.support.v4.app.Fragment;
 

@@ -1,32 +1,46 @@
-package app.example.baking.bakingapp.ui;
+package app.example.baking.bakingapp.ui.fragments;
 
 import android.content.Context;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.net.Uri;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.adapter.RecipeAdapter;
 import app.example.baking.bakingapp.loaders.RecipeLoader;
 import app.example.baking.bakingapp.model.Recipe;
 
+public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAdapterOnClickHandler{
 
-// This activity is responsible for displaying the master list of all images
-public class MainActivity extends AppCompatActivity implements RecipeAdapter.RecipeAdapterOnClickHandler  {
-    private static final String TAG = MainActivity.class.getSimpleName();
-
+    private static final String TAG = RecipesFragment.class.getSimpleName();
     private RecyclerView mRecyclerView;
     private RecipeAdapter mRecipeAdapter;
 
+    public RecipesFragment() {
+        // Required empty public constructor
+    }
+
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+
+
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        return inflater.inflate(R.layout.fragment_recipes, container, false);
 
         mRecyclerView = findViewById(R.id.recyclerview_movie);
 
@@ -39,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
         loadRecipeData();
     }
-
 
     private void loadRecipeData() {
         if (!isOnline()) return;
@@ -63,7 +76,6 @@ public class MainActivity extends AppCompatActivity implements RecipeAdapter.Rec
 
         Log.e(TAG, "click " );
     }
+
+
 }
-
-
-

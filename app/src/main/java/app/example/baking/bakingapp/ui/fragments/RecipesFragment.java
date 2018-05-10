@@ -40,11 +40,12 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes, container, false);
 
-        mRecyclerView = findViewById(R.id.recyclerview_movie);
+        View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
 
-        GridLayoutManager manager = new GridLayoutManager(this, 1, GridLayoutManager.VERTICAL, false);
+        mRecyclerView = rootView.findViewById(R.id.recyclerview_movie);
+
+        GridLayoutManager manager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
 
@@ -52,19 +53,21 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
         mRecyclerView.setAdapter(mRecipeAdapter);
 
         loadRecipeData();
+
+        return rootView;
     }
 
     private void loadRecipeData() {
         if (!isOnline()) return;
         new RecipeLoader(mRecipeAdapter).execute();
-        setTitle("None");
+        getActivity().setTitle("None");
 
         Log.e(TAG, "loading " );
     }
 
     //https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
     private boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
         assert cm != null;
         NetworkInfo netInfo = cm.getActiveNetworkInfo();
         return netInfo != null && netInfo.isConnectedOrConnecting();

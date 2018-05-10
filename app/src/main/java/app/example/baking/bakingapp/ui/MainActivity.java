@@ -13,7 +13,7 @@ import app.example.baking.bakingapp.ui.fragments.RecipesFragment;
 
 
 // This activity is responsible for displaying the master list of all images
-public class MainActivity extends AppCompatActivity  {
+public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
 
@@ -22,19 +22,19 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        RecipesFragment recipesFragment = new RecipesFragment();
+        // Only create new fragments when there is no previously saved state
+        if (savedInstanceState == null) {
 
-        // Add the fragment to its container using a FragmentManager and a Transaction
-        FragmentManager fragmentManager = getSupportFragmentManager();
+            RecipesFragment recipesFragment = new RecipesFragment();
 
-        fragmentManager.beginTransaction()
-                .add(R.id.container,recipesFragment)
-                .commit();
+            // Add the fragment to its container using a FragmentManager and a Transaction
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction()
+                    .add(R.id.container_recipes, recipesFragment)
+                    .commit();
 
+        }
     }
-
-
-
 }
 
 

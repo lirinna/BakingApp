@@ -4,15 +4,18 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import app.example.baking.bakingapp.R;
+import app.example.baking.bakingapp.model.Step;
 
 
 public class StepOverviewFragment extends Fragment {
 
+    private static final String TAG = StepOverviewFragment.class.getSimpleName();
 
     public StepOverviewFragment() {
         // Required empty public constructor
@@ -30,7 +33,21 @@ public class StepOverviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_step_overview, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_step_overview, container, false);
+
+
+
+        Step stepObject = getActivity().getIntent().getParcelableExtra("stepObject");
+        if (stepObject != null) {
+
+        String    description =  stepObject.getDescription();
+
+
+            Log.e(TAG, "description " + description );
+
+        }
+
+        return rootView;
     }
 
 

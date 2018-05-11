@@ -1,6 +1,7 @@
 package app.example.baking.bakingapp.ui.fragments;
 
 import android.content.Context;
+import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.adapter.StepsAdapter;
 import app.example.baking.bakingapp.model.Recipe;
 import app.example.baking.bakingapp.model.Step;
+import app.example.baking.bakingapp.ui.activities.StepOverviewActivity;
 
 
 public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapterOnClickHandler {
@@ -85,5 +87,10 @@ private ArrayList<Step> stepsList;
     @Override
     public void onClick(Step stepItem) {
 
+        Intent intent = new Intent(getActivity(), StepOverviewActivity.class);
+        intent.putExtra("stepObject", stepItem);
+        startActivity(intent);
+        Log.e(TAG, "click " );
+        Log.e(TAG, "stepItem " + stepItem );
     }
 }

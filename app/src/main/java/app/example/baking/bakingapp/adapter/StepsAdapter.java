@@ -42,7 +42,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
         public StepsAdapterViewHolder(View view) {
             super(view);
 
-            mName = view.findViewById(R.id.tv_ingredient_name);
+            mName = view.findViewById(R.id.tv_step_description);
             view.setOnClickListener(this);
         }
 
@@ -68,12 +68,12 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
 
     @Override
     public void onBindViewHolder(StepsAdapterViewHolder holder, int position) {
-        String description = mStepsData.get(position).getDescription();
+        String shortDescription = mStepsData.get(position).getShortDescription();
         String id = String.valueOf(mStepsData.get(position).getId());
 
-       // mName.setText(ingredient);
+        mName.setText(shortDescription);
 
-        Log.e(TAG, "description: " + description);
+        Log.e(TAG, "shortDescription: " + shortDescription);
         Log.e(TAG, "id: " + id);
 
 

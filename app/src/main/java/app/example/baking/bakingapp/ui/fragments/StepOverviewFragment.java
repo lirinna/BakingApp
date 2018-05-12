@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.model.Step;
@@ -41,6 +42,10 @@ public class StepOverviewFragment extends Fragment {
         if (stepObject != null) {
 
         String    description =  stepObject.getDescription();
+
+            TextView mName = rootView.findViewById(R.id.tv_step_overview_description);
+            mName.setText(description);
+
 
 
             Log.e(TAG, "description " + description );

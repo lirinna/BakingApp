@@ -62,8 +62,12 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
             ingredient =  recipeObject.getIngredients();
 
-            mIngredientsAdapter = new IngredientsAdapter(this,ingredient);
+            mIngredientsAdapter = new IngredientsAdapter(this);
+            mIngredientsAdapter.setIngredientData(ingredient);
+
             mRecyclerView.setAdapter(mIngredientsAdapter);
+
+
 
             Log.e(TAG, "ingredient " + ingredient );
         }

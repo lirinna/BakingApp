@@ -30,9 +30,9 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
     }
 
 
-    public StepsAdapter(StepsAdapterOnClickHandler clickHandler, ArrayList<Step> steps) {
+    public StepsAdapter(StepsAdapterOnClickHandler clickHandler) {
         mClickHandler = clickHandler;
-        mStepsData = steps;
+        mStepsData = new ArrayList<>();
     }
 
 
@@ -87,8 +87,8 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
     }
 
 
-    public void setIngredientData(ArrayList<Step> ingredientsData) {
-        mStepsData = ingredientsData;
+    public void setStepsData(ArrayList<Step> stepsData) {
+        mStepsData = stepsData;
         notifyDataSetChanged();
     }
 }

@@ -30,9 +30,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     }
 
 
-    public IngredientsAdapter(IngredientsAdapterOnClickHandler clickHandler, ArrayList<Ingredients> ingredient) {
+    public IngredientsAdapter(IngredientsAdapterOnClickHandler clickHandler) {
         mClickHandler = clickHandler;
-        mIngredientsData = ingredient;
+        mIngredientsData = new ArrayList<>();
     }
 
 

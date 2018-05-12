@@ -63,7 +63,8 @@ private ArrayList<Step> stepsList;
 
             stepsList =  recipeObject.getSteps();
 
-            mStepsAdapter = new StepsAdapter(this,stepsList);
+            mStepsAdapter = new StepsAdapter(this);
+            mStepsAdapter.setStepsData(stepsList);
 
             mRecyclerView.setAdapter(mStepsAdapter);
 

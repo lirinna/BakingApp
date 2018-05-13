@@ -24,6 +24,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     
     public TextView mName;
     private final IngredientsAdapterOnClickHandler mClickHandler;
+    private TextView mMeasure;
+    private TextView mQuantity;
 
     public interface IngredientsAdapterOnClickHandler {
         void onClick(Ingredients ingredientsItem);
@@ -43,6 +45,8 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
             super(view);
 
             mName = view.findViewById(R.id.tv_ingredient_name);
+            mMeasure = view.findViewById(R.id.tv_ingredient_measurement);
+            mQuantity = view.findViewById(R.id.tv_ingredient_quantity);
             view.setOnClickListener(this);
         }
 
@@ -73,8 +77,9 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         String measure = mIngredientsData.get(position).getMeasure();
         String quantity = String.valueOf(mIngredientsData.get(position).getQuantity());
 
-
         mName.setText(ingredient);
+        mMeasure.setText(measure);
+        mQuantity.setText(quantity);
 
         Log.e(TAG, "name: " + ingredient);
         Log.e(TAG, "measure: " + measure);

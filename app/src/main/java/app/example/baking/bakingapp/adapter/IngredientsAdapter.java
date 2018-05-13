@@ -76,10 +76,11 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     @Override
     public void onBindViewHolder(IngredientsAdapterViewHolder holder, int position) {
         String ingredient = mIngredientsData.get(position).getIngredient();
+        String ingredientUpper = ingredient.substring(0,1).toUpperCase() + ingredient.substring(1);
         String measure = mIngredientsData.get(position).getMeasure();
         String quantity = String.valueOf(mIngredientsData.get(position).getQuantity());
 
-        mName.setText(ingredient);
+        mName.setText(ingredientUpper);
         mMeasure.setText(measure);
         mQuantity.setText(quantity);
         mPoint.setText("\u2022");

@@ -53,6 +53,7 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
         mRecipeAdapter = new RecipeAdapter(this);
         mRecyclerView.setAdapter(mRecipeAdapter);
 
+
         loadRecipeData();
 
         return rootView;
@@ -61,7 +62,7 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
     private void loadRecipeData() {
         if (!isOnline()) return;
         new RecipeLoader(mRecipeAdapter).execute();
-        getActivity().setTitle("None");
+        getActivity().setTitle("Let's Bake");
 
         Log.e(TAG, "loading " );
     }

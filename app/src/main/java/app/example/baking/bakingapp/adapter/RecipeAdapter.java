@@ -1,12 +1,12 @@
 package app.example.baking.bakingapp.adapter;
 
 import android.content.Context;
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 
@@ -32,6 +32,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
 
     public RecipeAdapter(RecipeAdapterOnClickHandler clickHandler) {
         mClickHandler = clickHandler;
+
     }
 
 
@@ -63,6 +64,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
         View view = inflater.inflate(layoutIdForListItem, viewGroup, false);
         return new RecipeAdapterViewHolder(view);
     }
+
 
 
     @Override

@@ -44,7 +44,7 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
 
         View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
 
-        mRecyclerView = rootView.findViewById(R.id.recyclerview_movie);
+        mRecyclerView = rootView.findViewById(R.id.recyclerview_recipe);
 
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);

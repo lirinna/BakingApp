@@ -6,10 +6,9 @@
 
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_movie"
+        android:id="@+id/recyclerview_recipe"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
-
 
 
 </FrameLayout>

@@ -6,6 +6,9 @@
 
 
     <color name="backgroundColor">#F2F2F2</color>
+    <color name="primaryText">#212121</color>
+    <color name="secondaryText">#757575</color>
+
 
 
 

@@ -23,6 +23,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     private static final String TAG = RecipeAdapter.class.getSimpleName();
     private Recipe[] mRecipeData;
     public TextView mName;
+    public TextView mServings;
     private final RecipeAdapterOnClickHandler mClickHandler;
 
     public interface RecipeAdapterOnClickHandler {
@@ -42,6 +43,7 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
         public RecipeAdapterViewHolder(View view) {
             super(view);
             mName = view.findViewById(R.id.tv_name);
+            mServings = view.findViewById(R.id.tv_servings);
             view.setOnClickListener(this);
         }
 
@@ -70,10 +72,12 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     @Override
     public void onBindViewHolder(RecipeAdapterViewHolder holder, int position) {
         String name = mRecipeData[position].getName();
+        String servings = String.valueOf(mRecipeData[position].getServings());
         String image = mRecipeData[position].getImage();
         String steps = String.valueOf(mRecipeData[position].getSteps());
 
         mName.setText(name);
+        mServings.setText("Servings: "+servings);
 
         Log.e(TAG, "name: " + name);
         Log.e(TAG, "image: " + image);

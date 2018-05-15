@@ -23,6 +23,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
     private ArrayList<Step> mStepsData;
 
     public TextView mName;
+    public TextView mId;
     private final StepsAdapterOnClickHandler mClickHandler;
 
     public interface StepsAdapterOnClickHandler {
@@ -43,6 +44,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
             super(view);
 
             mName = view.findViewById(R.id.tv_step_description);
+            mId = view.findViewById(R.id.tv_step_id);
             view.setOnClickListener(this);
         }
 
@@ -72,6 +74,7 @@ public class StepsAdapter extends RecyclerView.Adapter<StepsAdapter.StepsAdapter
         String id = String.valueOf(mStepsData.get(position).getId());
 
         mName.setText(shortDescription);
+        mId.setText(id + ". ");
 
         Log.e(TAG, "shortDescription: " + shortDescription);
         Log.e(TAG, "id: " + id);

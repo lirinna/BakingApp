@@ -15,6 +15,8 @@ public class StepOverviewActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_step_overview);
 
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         // Only create new fragments when there is no previously saved state
         if (savedInstanceState == null) {
 

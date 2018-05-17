@@ -27,6 +27,7 @@ import com.google.android.exoplayer2.source.TrackGroupArray;
 import com.google.android.exoplayer2.trackselection.DefaultTrackSelector;
 import com.google.android.exoplayer2.trackselection.TrackSelectionArray;
 import com.google.android.exoplayer2.trackselection.TrackSelector;
+import com.google.android.exoplayer2.ui.AspectRatioFrameLayout;
 import com.google.android.exoplayer2.ui.SimpleExoPlayerView;
 import com.google.android.exoplayer2.upstream.DefaultDataSourceFactory;
 import com.google.android.exoplayer2.util.Util;
@@ -45,6 +46,8 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
     private MediaSessionCompat mMediaSession;
     private PlaybackStateCompat.Builder mStateBuilder;
     private String recipeUrl;
+    String description;
+    String recipeThumbnailUrl;
     private Step step;
     private ImageView mThumbnail;
 
@@ -62,17 +65,16 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
         mPlayerView = rootView.findViewById(R.id.playerView);
         mThumbnail = rootView.findViewById(R.id.iv_step_overview_thumbnail);
 
+
         if (savedInstanceState != null) {
+            Log.e(TAG, "savedInstance ");
 
-        }
+            step = savedInstanceState.getParcelable("step");
 
-        Step stepObject = getActivity().getIntent().getParcelableExtra("stepObject");
-        step = stepObject;
-        if (stepObject != null) {
-
-            String description = stepObject.getDescription();
-            String recipeThumbnailUrl = step.getThumbnailURL();
-            recipeUrl = stepObject.getVideoURL();
+            assert step != null;
+            description = step.getDescription();
+            recipeThumbnailUrl = step.getThumbnailURL();
+            recipeUrl = step.getVideoURL();
 
             if (!step.getVideoURL().equals("")) {
                 mThumbnail.setVisibility(View.GONE);
@@ -84,13 +86,11 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
                 mPlayerView.setVisibility(View.GONE);
 
                 Picasso.Builder builder = new Picasso.Builder(getContext());
-                builder.listener(new Picasso.Listener()
-                {
+                builder.listener(new Picasso.Listener() {
                     @Override
-                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception)
-                    {
+                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
                         exception.printStackTrace();
-                        Log.e(TAG, "image error " );
+                        Log.e(TAG, "image error ");
                         mThumbnail.setVisibility(View.GONE);
                     }
                 });
@@ -99,9 +99,45 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
                 mPlayerView.setVisibility(View.GONE);
                 mThumbnail.setVisibility(View.GONE);
             }
-
             TextView mName = rootView.findViewById(R.id.tv_step_overview_description);
             mName.setText(description);
+
+        } else {
+
+           step = getActivity().getIntent().getParcelableExtra("stepObject");
+            if (step != null) {
+
+                description = step.getDescription();
+                recipeThumbnailUrl = step.getThumbnailURL();
+                recipeUrl = step.getVideoURL();
+
+                if (!step.getVideoURL().equals("")) {
+                    mThumbnail.setVisibility(View.GONE);
+
+                    initializeMediaSession();
+                    initializePlayer(Uri.parse(recipeUrl));
+
+                } else if (!step.getThumbnailURL().equals("")) {
+                    mPlayerView.setVisibility(View.GONE);
+
+                    Picasso.Builder builder = new Picasso.Builder(getContext());
+                    builder.listener(new Picasso.Listener() {
+                        @Override
+                        public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
+                            exception.printStackTrace();
+                            Log.e(TAG, "image error ");
+                            mThumbnail.setVisibility(View.GONE);
+                        }
+                    });
+                    builder.build().load(recipeThumbnailUrl).into(mThumbnail);
+                } else {
+                    mPlayerView.setVisibility(View.GONE);
+                    mThumbnail.setVisibility(View.GONE);
+                }
+                TextView mName = rootView.findViewById(R.id.tv_step_overview_description);
+                mName.setText(description);
+            }
+
 
         }
 
@@ -182,7 +218,6 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             LoadControl loadControl = new DefaultLoadControl();
             mExoPlayer = ExoPlayerFactory.newSimpleInstance(getContext(), trackSelector, loadControl);
             mPlayerView.setPlayer(mExoPlayer);
-
 
             // Set the ExoPlayer.EventListener to this activity.
             mExoPlayer.addListener(this);

@@ -27,7 +27,7 @@ As a working Android developer, you often have to create and implement apps wher
 
 - [x] App should display recipes from provided network resource.
 - [x] App should allow navigation between individual recipes and recipe steps.
-- [ ] App uses RecyclerView and can handle recipe steps that include videos or images.
+- [x] App uses RecyclerView and can handle recipe steps that include videos or images.
 - [ ] App conforms to common standards found in the Android Nanodegree General Project Guidelines.
 
 #### Components and Libraries

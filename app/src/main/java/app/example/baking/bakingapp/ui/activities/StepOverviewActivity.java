@@ -1,5 +1,6 @@
 package app.example.baking.bakingapp.ui.activities;
 
+import android.content.res.Configuration;
 import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,6 +26,16 @@ public class StepOverviewActivity extends AppCompatActivity {
                     .add(R.id.container_step_overview, stepsFragment)
                     .commit();
 
+        }
+    }
+
+   @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+            getSupportActionBar().hide();
+        } else {
+            getSupportActionBar().show();
         }
     }
 }

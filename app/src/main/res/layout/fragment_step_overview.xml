@@ -6,20 +6,33 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:orientation="vertical"
-        android:layout_height="wrap_content">
-
-        <com.google.android.exoplayer2.ui.SimpleExoPlayerView
-            android:id="@+id/playerView"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-             />
-
-    <TextView
-        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:id="@+id/tv_step_overview_description"
-         />
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.exoplayer2.ui.SimpleExoPlayerView
+                android:id="@+id/playerView"
+                android:layout_width="match_parent"
+                android:layout_height="200dp" />
+
+            <ImageView
+                android:id="@+id/iv_step_overview_thumbnail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/step_overview" />
+
+            <TextView
+                android:id="@+id/tv_step_overview_description"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="10dp" />
+
+        </LinearLayout>
 
     </LinearLayout>
 </FrameLayout>

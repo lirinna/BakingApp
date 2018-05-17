@@ -72,13 +72,6 @@ private ArrayList<Step> stepsList;
 
             mRecyclerView.setAdapter(mStepsAdapter);
 
-          /*  DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(),
-                    manager.getOrientation());
-            mRecyclerView.addItemDecoration(dividerItemDecoration);
-            */
-
-
-
             Log.e(TAG, "step " + stepsList );
 
         }

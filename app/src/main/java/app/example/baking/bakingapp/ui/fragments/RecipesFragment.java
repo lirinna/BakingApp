@@ -33,15 +33,11 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-
         View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
 
         mRecyclerView = rootView.findViewById(R.id.recyclerview_recipe);
@@ -53,11 +49,11 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
         mRecipeAdapter = new RecipeAdapter(this);
         mRecyclerView.setAdapter(mRecipeAdapter);
 
-
         loadRecipeData();
 
         return rootView;
     }
+
 
     private void loadRecipeData() {
         if (!isOnline()) return;

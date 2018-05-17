@@ -9,6 +9,8 @@ import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.GridLayoutManager;
@@ -28,25 +30,20 @@ import app.example.baking.bakingapp.ui.activities.StepOverviewActivity;
 
 
 public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapterOnClickHandler {
+    private static final String TAG = StepsFragment.class.getSimpleName();
 
+    private String TAG_FRAGMENT = "Tag_FRAGEMENT";
 
-private static final String TAG = StepsFragment.class.getSimpleName();
-private RecyclerView mRecyclerView;
-private StepsAdapter mStepsAdapter;
+    private RecyclerView mRecyclerView;
+    private StepsAdapter mStepsAdapter;
+    private ArrayList<Step> stepsList;
 
-private ArrayList<Step> stepsList;
-
+    private static boolean isTwoPane;
 
     public StepsFragment() {
         // Required empty public constructor
     }
 
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -61,19 +58,17 @@ private ArrayList<Step> stepsList;
         mRecyclerView.setHasFixedSize(true);
 
 
-
         Recipe recipeObject = getActivity().getIntent().getParcelableExtra("recipeObject");
         if (recipeObject != null) {
 
-            stepsList =  recipeObject.getSteps();
+            stepsList = recipeObject.getSteps();
 
             mStepsAdapter = new StepsAdapter(this);
             mStepsAdapter.setStepsData(stepsList);
 
             mRecyclerView.setAdapter(mStepsAdapter);
 
-            Log.e(TAG, "step " + stepsList );
-
+            Log.e(TAG, "step " + stepsList);
         }
 
         return rootView;
@@ -81,21 +76,36 @@ private ArrayList<Step> stepsList;
 
 
 
-    //https://stackoverflow.com/questions/1560788/how-to-check-internet-access-on-android-inetaddress-never-times-out
-    private boolean isOnline() {
-        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
-        assert cm != null;
-        NetworkInfo netInfo = cm.getActiveNetworkInfo();
-        return netInfo != null && netInfo.isConnectedOrConnecting();
-    }
-
     @Override
     public void onClick(Step stepItem) {
 
-        Intent intent = new Intent(getActivity(), StepOverviewActivity.class);
-        intent.putExtra("stepObject", stepItem);
-        startActivity(intent);
-        Log.e(TAG, "click " );
-        Log.e(TAG, "stepItem " + stepItem );
+        if (!isTwoPane) {
+            Log.e(TAG, "Single Screen ");
+
+            Intent intent = new Intent(getActivity(), StepOverviewActivity.class);
+            intent.putExtra("stepObject", stepItem);
+            startActivity(intent);
+            Log.e(TAG, "click ");
+            Log.e(TAG, "stepItem " + stepItem);
+        }else {
+            Log.e(TAG, "Double Screen ");
+
+            StepOverviewFragment stepsOverviewFragment = new StepOverviewFragment();
+            FragmentTransaction transaction = getFragmentManager().beginTransaction();
+            transaction.replace(R.id.container_step_overview, stepsOverviewFragment);
+            transaction.addToBackStack(null);
+
+            Bundle bb = new Bundle();
+            bb.putParcelable("new",stepItem);
+            StepOverviewFragment.putItemT(bb);
+            
+            transaction.commit();
+
+        }
+
+    }
+
+    public static void setTwoPane(Boolean flag) {
+        isTwoPane = flag;
     }
 }

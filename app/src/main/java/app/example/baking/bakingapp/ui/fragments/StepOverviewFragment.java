@@ -77,16 +77,13 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             if (step != null)
                 setVideoOrImage(step);
 
-
+            //Get Steps for Tablet Layout
             if(mBundle != null) {
-              step =  mBundle.getParcelable("new");
+              step =  mBundle.getParcelable("bundleStep");
                 Log.e(TAG, "bundle step " + step);
                 if (step != null)
                     setVideoOrImage(step);
             }
-
-
-
         }
 
         TextView mName = rootView.findViewById(R.id.tv_step_overview_description);

@@ -19,15 +19,29 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.activities.DetailsActivity"
+        <activity
+            android:name=".ui.activities.DetailsActivity"
             android:launchMode="singleTop"
-            android:parentActivityName=".ui.activities.MainActivity"
-            />
-
-        <activity android:name=".ui.activities.StepOverviewActivity"
+            android:parentActivityName=".ui.activities.MainActivity" />
+        <activity
+            android:name=".ui.activities.StepOverviewActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"
-            android:parentActivityName=".ui.activities.DetailsActivity"
-            />
+            android:parentActivityName=".ui.activities.DetailsActivity" />
+
+        <receiver android:name=".widget.BakingWidgetProvider">
+            <intent-filter>
+                <action android:name="android.appwidget.action.APPWIDGET_UPDATE" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.appwidget.provider"
+                android:resource="@xml/baking_widget_provider_info" />
+        </receiver>
+
+        <service
+            android:name=".widget.BakingService"
+            android:enabled="true"
+            android:exported="true"></service>
     </application>
 
 </manifest>

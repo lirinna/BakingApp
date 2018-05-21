@@ -78,8 +78,8 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
                 setVideoOrImage(step);
 
             //Get Steps for Tablet Layout
-            if(mBundle != null) {
-              step =  mBundle.getParcelable("bundleStep");
+            if (mBundle != null) {
+                step = mBundle.getParcelable("bundleStep");
                 Log.e(TAG, "bundle step " + step);
                 if (step != null)
                     setVideoOrImage(step);
@@ -243,7 +243,7 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
     }
 
     public static void putItemT(Bundle bundle) {
-       mBundle = bundle;
+        mBundle = bundle;
     }
 
     /**

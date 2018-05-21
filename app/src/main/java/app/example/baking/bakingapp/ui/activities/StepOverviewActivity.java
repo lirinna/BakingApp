@@ -27,14 +27,13 @@ public class StepOverviewActivity extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .add(R.id.container_step_overview, stepsFragment)
                     .commit();
-
         }
     }
 
-   @Override
+    @Override
     public void onConfigurationChanged(Configuration newConfig) {
         super.onConfigurationChanged(newConfig);
-        if(newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+        if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
             getSupportActionBar().hide();
         } else {
             getSupportActionBar().show();

@@ -15,8 +15,7 @@
         android:padding="8dp"
         android:text="@string/recipe_name"
         android:textColor="#ffffff"
-        android:textSize="24sp"
-        />
+        android:textSize="24sp" />
 
     <TextView
         android:id="@+id/appwidget_text_list_items"

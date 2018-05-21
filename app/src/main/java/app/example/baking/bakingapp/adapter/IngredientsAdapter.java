@@ -21,7 +21,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
 
     private static final String TAG = IngredientsAdapter.class.getSimpleName();
     private ArrayList<Ingredients> mIngredientsData;
-    
+
     public TextView mName;
     private final IngredientsAdapterOnClickHandler mClickHandler;
     private TextView mMeasure;
@@ -61,7 +61,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     }
 
 
-
     @Override
     public IngredientsAdapterViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         Context context = viewGroup.getContext();
@@ -76,7 +75,7 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
     @Override
     public void onBindViewHolder(IngredientsAdapterViewHolder holder, int position) {
         String ingredient = mIngredientsData.get(position).getIngredient();
-        String ingredientUpper = ingredient.substring(0,1).toUpperCase() + ingredient.substring(1);
+        String ingredientUpper = ingredient.substring(0, 1).toUpperCase() + ingredient.substring(1);
         String measure = mIngredientsData.get(position).getMeasure();
         String quantity = String.valueOf(mIngredientsData.get(position).getQuantity());
 
@@ -90,7 +89,6 @@ public class IngredientsAdapter extends RecyclerView.Adapter<IngredientsAdapter.
         Log.e(TAG, "quantity: " + quantity);
 
     }
-
 
 
     @Override

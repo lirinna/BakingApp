@@ -1,5 +1,5 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/colorPrimary"
     android:orientation="vertical"
@@ -11,11 +11,12 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:padding="8dp"
         android:background="@color/cardview_dark_background"
+        android:padding="8dp"
+        android:text="@string/recipe_name"
         android:textColor="#ffffff"
         android:textSize="24sp"
-        android:textStyle="bold" />
+        />
 
     <TextView
         android:id="@+id/appwidget_text_list_items"

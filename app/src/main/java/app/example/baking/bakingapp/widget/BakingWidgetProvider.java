@@ -1,12 +1,10 @@
 package app.example.baking.bakingapp.widget;
 
-import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.text.TextUtils;
 import android.util.Log;
 import android.widget.RemoteViews;
 
@@ -26,10 +24,9 @@ public class BakingWidgetProvider extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-        CharSequence widgetText = context.getString(R.string.appwidget_text);
+
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_widget_provider);
-        views.setTextViewText(R.id.appwidget_text, widgetText);
 
         // Instruct the widget manager to update the widget
         appWidgetManager.updateAppWidget(appWidgetId, views);
@@ -58,11 +55,9 @@ public class BakingWidgetProvider extends AppWidgetProvider {
                 String ingredientMeasure = item.getMeasure();
 
                 Log.e(TAG, "ingridentname " + ingredientUpper);
-                Log.e(TAG, "ingridentname " + ingredientMeasure);
 
-                sb.append(ingredientUpper +  " " + ingredientQuantity + " " + ingredientMeasure + "\n");
+                sb.append(ingredientUpper).append(" ").append(ingredientQuantity).append(" ").append(ingredientMeasure).append("\n");
             }
-
 
             Log.e(TAG, "listString " + sb);
 
@@ -91,6 +86,7 @@ public class BakingWidgetProvider extends AppWidgetProvider {
     @Override
     public void onEnabled(Context context) {
         // Enter relevant functionality for when the first widget is created
+
     }
 
     @Override

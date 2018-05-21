@@ -24,7 +24,6 @@ public class BakingWidgetProvider extends AppWidgetProvider {
     static void updateAppWidget(Context context, AppWidgetManager appWidgetManager,
                                 int appWidgetId) {
 
-
         // Construct the RemoteViews object
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_widget_provider);
 
@@ -35,7 +34,6 @@ public class BakingWidgetProvider extends AppWidgetProvider {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-
 
         RemoteViews views = new RemoteViews(context.getPackageName(), R.layout.baking_widget_provider);
 
@@ -54,8 +52,6 @@ public class BakingWidgetProvider extends AppWidgetProvider {
                 String ingredientQuantity = String.valueOf(item.getQuantity());
                 String ingredientMeasure = item.getMeasure();
 
-                Log.e(TAG, "ingridentname " + ingredientUpper);
-
                 sb.append(ingredientUpper).append(" ").append(ingredientQuantity).append(" ").append(ingredientMeasure).append("\n");
             }
 
@@ -65,11 +61,11 @@ public class BakingWidgetProvider extends AppWidgetProvider {
             views.setTextViewText(R.id.appwidget_text, name);
             views.setTextViewText(R.id.appwidget_text_list_items, sb);
 
-            updateWidgetNow(context, views);
+            updateWidget(context, views);
         }
     }
 
-    public void updateWidgetNow(Context context, RemoteViews remoteViews) {
+    public void updateWidget(Context context, RemoteViews remoteViews) {
         ComponentName widgetComponent = new ComponentName(context, BakingWidgetProvider.class);
         AppWidgetManager.getInstance(context).updateAppWidget(widgetComponent, remoteViews);
     }
@@ -80,7 +76,6 @@ public class BakingWidgetProvider extends AppWidgetProvider {
         for (int appWidgetId : appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId);
         }
-
     }
 
     @Override

@@ -34,7 +34,7 @@ import com.squareup.picasso.Picasso;
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.model.Step;
 
-
+// https://github.com/udacity/AdvancedAndroid_ClassicalMusicQuiz/tree/TMED.04-Solution-AddMediaSession
 public class StepOverviewFragment extends Fragment implements ExoPlayer.EventListener {
 
     private static final String TAG = StepOverviewFragment.class.getSimpleName();

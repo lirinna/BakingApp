@@ -69,6 +69,7 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
     }
 
 
+// https://www.androidhive.info/2016/05/android-working-with-retrofit-http-library/
     private void loadRecipeData() {
         if (!isOnline()) return;
 

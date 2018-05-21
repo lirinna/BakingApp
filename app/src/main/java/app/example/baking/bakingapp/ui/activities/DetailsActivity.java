@@ -4,13 +4,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 
 import app.example.baking.bakingapp.R;
-import app.example.baking.bakingapp.model.Step;
 import app.example.baking.bakingapp.ui.fragments.IngredientsFragment;
-import app.example.baking.bakingapp.ui.fragments.RecipesFragment;
-import app.example.baking.bakingapp.ui.fragments.StepOverviewFragment;
 import app.example.baking.bakingapp.ui.fragments.StepsFragment;
 
 // https://github.com/udacity/Android_Me/blob/TFragments.07-Solution-TwoPaneUI/app/src/main/java/com/example/android/android_me/ui/MainActivity.java

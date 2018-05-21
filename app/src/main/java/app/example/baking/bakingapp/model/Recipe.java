@@ -3,6 +3,7 @@ package app.example.baking.bakingapp.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
@@ -11,11 +12,17 @@ import java.util.ArrayList;
  */
 
 public class Recipe implements Parcelable {
+    @SerializedName("id")
     private int id;
+    @SerializedName("name")
     private String name;
+    @SerializedName("ingredients")
     private ArrayList<Ingredients> ingredients;
+    @SerializedName("steps")
     private ArrayList<Step> steps;
+    @SerializedName("servings")
     private int servings;
+    @SerializedName("image")
     private String image;
 
     public Recipe(int id, String name, ArrayList<Ingredients> ingredients, ArrayList<Step> steps, int servings, String image) {

@@ -1,7 +1,6 @@
 package app.example.baking.bakingapp.adapter;
 
 import android.content.Context;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -9,6 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
+import java.util.ArrayList;
+import java.util.List;
 
 import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.model.Recipe;
@@ -21,9 +23,9 @@ import app.example.baking.bakingapp.model.Recipe;
 public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdapterViewHolder> {
 
     private static final String TAG = RecipeAdapter.class.getSimpleName();
-    private Recipe[] mRecipeData;
-    public TextView mName;
-    public TextView mServings;
+    private List<Recipe> mRecipeData;
+    private TextView mName;
+    private TextView mServings;
     private final RecipeAdapterOnClickHandler mClickHandler;
 
     public interface RecipeAdapterOnClickHandler {
@@ -31,8 +33,9 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     }
 
 
-    public RecipeAdapter(RecipeAdapterOnClickHandler clickHandler) {
+    public RecipeAdapter(RecipeAdapterOnClickHandler clickHandler, ArrayList<Recipe> mRecipes) {
         mClickHandler = clickHandler;
+        mRecipeData = mRecipes;
 
     }
 
@@ -50,11 +53,10 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
         @Override
         public void onClick(View v) {
             int adapterPosition = getAdapterPosition();
-            Recipe recipeItem = mRecipeData[adapterPosition];
+            Recipe recipeItem = mRecipeData.get(adapterPosition);
             mClickHandler.onClick(recipeItem);
         }
     }
-
 
 
     @Override
@@ -68,16 +70,15 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     }
 
 
-
     @Override
     public void onBindViewHolder(RecipeAdapterViewHolder holder, int position) {
-        String name = mRecipeData[position].getName();
-        String servings = String.valueOf(mRecipeData[position].getServings());
-        String image = mRecipeData[position].getImage();
-        String steps = String.valueOf(mRecipeData[position].getSteps());
+        String name = mRecipeData.get(position).getName();
+        String servings = String.valueOf(mRecipeData.get(position).getServings());
+        String image = mRecipeData.get(position).getImage();
+        String steps = String.valueOf(mRecipeData.get(position).getSteps());
 
         mName.setText(name);
-        mServings.setText("Servings: "+servings);
+        mServings.setText("Servings: " + servings);
 
         Log.e(TAG, "name: " + name);
         Log.e(TAG, "image: " + image);
@@ -86,15 +87,14 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.RecipeAdap
     }
 
 
-
     @Override
     public int getItemCount() {
         if (null == mRecipeData) return 0;
-        return mRecipeData.length;
+        return mRecipeData.size();
     }
 
 
-    public void setRecipeData(Recipe[] recipeData) {
+    public void setRecipeData(List<Recipe> recipeData) {
         mRecipeData = recipeData;
         notifyDataSetChanged();
     }

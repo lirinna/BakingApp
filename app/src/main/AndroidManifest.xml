@@ -38,10 +38,6 @@
                 android:resource="@xml/baking_widget_provider_info" />
         </receiver>
 
-        <service
-            android:name=".widget.BakingService"
-            android:enabled="true"
-            android:exported="true"></service>
     </application>
 
 </manifest>

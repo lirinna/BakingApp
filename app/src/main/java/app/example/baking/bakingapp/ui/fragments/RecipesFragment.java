@@ -1,5 +1,6 @@
 package app.example.baking.bakingapp.ui.fragments;
 
+import android.appwidget.AppWidgetManager;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
@@ -18,6 +19,7 @@ import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.adapter.RecipeAdapter;
 import app.example.baking.bakingapp.loaders.RecipeLoader;
 import app.example.baking.bakingapp.model.Recipe;
+import app.example.baking.bakingapp.widget.BakingWidgetProvider;
 
 public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAdapterOnClickHandler{
 
@@ -77,6 +79,12 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
         intent.putExtra("recipeObject", recipeItem);
         startActivity(intent);
         Log.e(TAG, "click " );
+
+
+        Intent intentWidget = new Intent(getActivity(), BakingWidgetProvider.class);
+        intentWidget.setAction(AppWidgetManager.EXTRA_CUSTOM_EXTRAS);
+        intentWidget.putExtra("recipeObject",recipeItem);
+        getActivity().sendBroadcast(intentWidget);
     }
 
 

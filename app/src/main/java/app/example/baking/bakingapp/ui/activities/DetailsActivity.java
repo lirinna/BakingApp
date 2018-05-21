@@ -34,6 +34,7 @@ public class DetailsActivity extends AppCompatActivity {
 
             // This LinearLayout will only initially exist in the two-pane tablet case
             mTwoPane = true;
+
         } else {
             // We're in single-pane mode and displaying fragments on a phone in separate activities
             mTwoPane = false;

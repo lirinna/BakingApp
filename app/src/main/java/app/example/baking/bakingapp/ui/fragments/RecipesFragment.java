@@ -53,11 +53,9 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_recipes, container, false);
-
-        mRecyclerView = rootView.findViewById(R.id.recyclerview_recipe);
-
         mApiInterface = ApiClient.getApiClient().create(ApiInterface.class);
 
+        mRecyclerView = rootView.findViewById(R.id.recyclerview_recipe);
         GridLayoutManager manager = new GridLayoutManager(getActivity(), 1, GridLayoutManager.VERTICAL, false);
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
@@ -80,7 +78,6 @@ public class RecipesFragment extends Fragment implements RecipeAdapter.RecipeAda
             @Override
             public void onResponse(@NonNull Call<List<Recipe>> call, @NonNull Response<List<Recipe>> response) {
                 mRecipes = (ArrayList<Recipe>) response.body();
-                Log.e(TAG, "loading " );
                 Log.e(TAG, "loading "+ mRecipes );
                 mRecipeAdapter.setRecipeData(mRecipes);
             }

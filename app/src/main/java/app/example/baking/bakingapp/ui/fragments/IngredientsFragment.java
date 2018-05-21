@@ -60,6 +60,8 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
         Recipe recipeObject = getActivity().getIntent().getParcelableExtra("recipeObject");
         if (recipeObject != null) {
 
+         String recipeName =   recipeObject.getName();
+
             ingredient =  recipeObject.getIngredients();
 
             mIngredientsAdapter = new IngredientsAdapter(this);
@@ -67,7 +69,7 @@ public class IngredientsFragment extends Fragment implements IngredientsAdapter.
 
             mRecyclerView.setAdapter(mIngredientsAdapter);
 
-
+            getActivity().setTitle(recipeName);
 
             Log.e(TAG, "ingredient " + ingredient );
         }

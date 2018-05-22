@@ -5,9 +5,7 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import app.example.baking.bakingapp.R;
-
 import app.example.baking.bakingapp.ui.fragments.RecipesFragment;
-
 
 // This activity is responsible for displaying the master list of all images
 public class MainActivity extends AppCompatActivity {

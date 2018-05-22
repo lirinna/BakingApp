@@ -35,11 +35,15 @@ import app.example.baking.bakingapp.R;
 import app.example.baking.bakingapp.model.Step;
 
 // https://github.com/udacity/AdvancedAndroid_ClassicalMusicQuiz/tree/TMED.04-Solution-AddMediaSession
+// https://stackoverflow.com/questions/45481775/exoplayer-restore-state-when-resumed/45482017#45482017
 public class StepOverviewFragment extends Fragment implements ExoPlayer.EventListener {
 
     private static final String TAG = StepOverviewFragment.class.getSimpleName();
-    String description;
-    String recipeThumbnailUrl;
+    public static final String PLAYER_POSITION = "player_position";
+    public static final String PLAY_WHEN_READY = "play_when_ready";
+
+    private String description;
+    private String recipeThumbnailUrl;
     private SimpleExoPlayer mExoPlayer;
     private SimpleExoPlayerView mPlayerView;
     private MediaSessionCompat mMediaSession;
@@ -48,6 +52,9 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
     private Step step;
     private ImageView mThumbnail;
     private static Bundle mBundle;
+
+    private boolean isPlayWhenReady;
+    private long playerPosition;
 
     public StepOverviewFragment() {
         // Required empty public constructor
@@ -65,6 +72,9 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
 
         if (savedInstanceState != null) {
             Log.e(TAG, "savedInstance ");
+
+            playerPosition = savedInstanceState.getLong(PLAYER_POSITION);
+            isPlayWhenReady = savedInstanceState.getBoolean(PLAY_WHEN_READY);
 
             step = savedInstanceState.getParcelable("step");
             if (step != null)
@@ -118,6 +128,7 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
         } else {
             mPlayerView.setVisibility(View.GONE);
             mThumbnail.setVisibility(View.GONE);
+            // mThumbnail.setImageResource(R.drawable.fallback);
         }
 
     }
@@ -127,6 +138,8 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putParcelable("step", step);
+        outState.putLong(PLAYER_POSITION, playerPosition);
+        outState.putBoolean(PLAY_WHEN_READY, isPlayWhenReady);
     }
 
     /**
@@ -186,7 +199,8 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             MediaSource mediaSource = new ExtractorMediaSource(mediaUri, new DefaultDataSourceFactory(
                     getContext(), userAgent), new DefaultExtractorsFactory(), null, null);
             mExoPlayer.prepare(mediaSource);
-            mExoPlayer.setPlayWhenReady(true);
+            mExoPlayer.setPlayWhenReady(isPlayWhenReady);
+            mExoPlayer.seekTo(playerPosition);
         }
     }
 
@@ -224,9 +238,13 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
      * Release ExoPlayer.
      */
     private void releasePlayer() {
-        mExoPlayer.stop();
-        mExoPlayer.release();
-        mExoPlayer = null;
+        if (mExoPlayer != null) {
+            playerPosition = mExoPlayer.getCurrentPosition();
+            isPlayWhenReady = mExoPlayer.getPlayWhenReady();
+            mExoPlayer.stop();
+            mExoPlayer.release();
+            mExoPlayer = null;
+        }
     }
 
     /**
@@ -239,7 +257,6 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             releasePlayer();
             mMediaSession.setActive(false);
         }
-
     }
 
     public static void putItemT(Bundle bundle) {
@@ -264,6 +281,30 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
         public void onSkipToPrevious() {
             mExoPlayer.seekTo(0);
         }
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        initializePlayer(Uri.parse(recipeUrl));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        initializePlayer(Uri.parse(recipeUrl));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        onDestroy();
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        onDestroy();
     }
 
 

@@ -5,13 +5,13 @@ import android.support.v4.app.FragmentManager;
 import android.support.v7.app.AppCompatActivity;
 
 import app.example.baking.bakingapp.R;
+
 import app.example.baking.bakingapp.ui.fragments.RecipesFragment;
 
 
 // This activity is responsible for displaying the master list of all images
 public class MainActivity extends AppCompatActivity {
     private static final String TAG = MainActivity.class.getSimpleName();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,10 +28,6 @@ public class MainActivity extends AppCompatActivity {
             fragmentManager.beginTransaction()
                     .add(R.id.container_recipes, recipesFragment)
                     .commit();
-
         }
     }
 }
-
-
-

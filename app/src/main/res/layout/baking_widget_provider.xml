@@ -24,6 +24,7 @@
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         android:layout_margin="8dp"
+        android:text="@string/no_recipe_selected_yet"
         android:background="@color/colorPrimary"
         android:textColor="#ffffff"
         android:textSize="13sp" />

@@ -244,6 +244,7 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             mExoPlayer.stop();
             mExoPlayer.release();
             mExoPlayer = null;
+            mMediaSession.setActive(false);
         }
     }
 
@@ -298,13 +299,13 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
     @Override
     public void onPause() {
         super.onPause();
-        onDestroy();
+        releasePlayer();
     }
 
     @Override
     public void onStop() {
         super.onStop();
-        onDestroy();
+        releasePlayer();
     }
 
 

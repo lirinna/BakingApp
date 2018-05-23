@@ -2,6 +2,7 @@ package app.example.baking.bakingapp.ui.fragments;
 
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.media.session.MediaSessionCompat;
 import android.support.v4.media.session.PlaybackStateCompat;
@@ -32,6 +33,7 @@ import com.google.android.exoplayer2.util.Util;
 import com.squareup.picasso.Picasso;
 
 import app.example.baking.bakingapp.R;
+import app.example.baking.bakingapp.model.Recipe;
 import app.example.baking.bakingapp.model.Step;
 
 // https://github.com/udacity/AdvancedAndroid_ClassicalMusicQuiz/tree/TMED.04-Solution-AddMediaSession
@@ -99,6 +101,9 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
         TextView mName = rootView.findViewById(R.id.tv_step_overview_description);
         mName.setText(description);
 
+        Recipe recipe = getActivity().getIntent().getParcelableExtra("recipeObject");
+        String  title = recipe.getName();
+        getActivity().setTitle(title);
         return rootView;
     }
 
@@ -244,7 +249,6 @@ public class StepOverviewFragment extends Fragment implements ExoPlayer.EventLis
             mExoPlayer.stop();
             mExoPlayer.release();
             mExoPlayer = null;
-            mMediaSession.setActive(false);
         }
     }
 

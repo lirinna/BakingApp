@@ -28,6 +28,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapter
     private StepsAdapter mStepsAdapter;
     private ArrayList<Step> stepsList;
 
+    private Recipe recipeObject;
     public StepsFragment() {
         // Required empty public constructor
     }
@@ -47,7 +48,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapter
         mRecyclerView.setLayoutManager(manager);
         mRecyclerView.setHasFixedSize(true);
 
-        Recipe recipeObject = getActivity().getIntent().getParcelableExtra("recipeObject");
+        recipeObject = getActivity().getIntent().getParcelableExtra("recipeObject");
         if (recipeObject != null) {
 
             stepsList = recipeObject.getSteps();
@@ -67,6 +68,7 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapter
 
             Intent intent = new Intent(getActivity(), StepOverviewActivity.class);
             intent.putExtra("stepObject", stepItem);
+            intent.putExtra("recipeObject",recipeObject);
             startActivity(intent);
         } else {
             Log.e(TAG, "Double Screen ");

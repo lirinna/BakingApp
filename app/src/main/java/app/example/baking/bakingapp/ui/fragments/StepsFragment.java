@@ -51,7 +51,6 @@ public class StepsFragment extends Fragment implements StepsAdapter.StepsAdapter
         if (recipeObject != null) {
 
             stepsList = recipeObject.getSteps();
-
             mStepsAdapter = new StepsAdapter(this);
             mStepsAdapter.setStepsData(stepsList);
             mRecyclerView.setAdapter(mStepsAdapter);

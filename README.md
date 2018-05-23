@@ -48,7 +48,7 @@ As a working Android developer, you often have to create and implement apps wher
 
 <img src="https://user-images.githubusercontent.com/37187549/40436728-e888ae16-5eb3-11e8-92df-76ffee88eaee.png" width="250"><img src="https://user-images.githubusercontent.com/37187549/40436812-177e4226-5eb4-11e8-95dd-6196caa0b797.png" width="250">
 
-<img src="https://user-images.githubusercontent.com/37187549/40436850-2c6deeb6-5eb4-11e8-9f90-d2bae813e017.png" width="250"><img src="https://user-images.githubusercontent.com/37187549/40436934-5a028616-5eb4-11e8-8fc4-e026a1e0e8d5.png" width="250">
+<img src="https://user-images.githubusercontent.com/37187549/40437740-7bcb3020-5eb6-11e8-94f6-f172765fc7e6.png" width="250"><img src="https://user-images.githubusercontent.com/37187549/40436934-5a028616-5eb4-11e8-8fc4-e026a1e0e8d5.png" width="250">
 
 
 
